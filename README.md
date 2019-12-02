@@ -1,2 +1,2 @@
 # advent-of-code
-Code challanges durint December
+Code challanges during December 2019
