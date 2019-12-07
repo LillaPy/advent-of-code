@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from fuel_calculation import fuel_calculation_for_modules_mass
 
 def test_fuel_calculation_for_modules_mass(mass):

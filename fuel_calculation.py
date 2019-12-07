@@ -22,18 +22,26 @@ def fuel_counter_upper():
     # print("response.content : {}".format(response.content))
     # print("response.json: {}".format(response.json))
 
-    with requests.Session() as session:
-        session.auth = ('username', getpass())
+    # with requests.Session() as session:
+    #     session.auth = ('username', getpass())
+    #
+    #     # Instead of requests.get(), you'll use session.get()
+    #     response = session.get('https://adventofcode.com/2019/day/1/input')
+    #     print("response.content : {}".format(response.content))
+    #
+    # # You can inspect the response just like you did before
+    #     print(response.headers)
+    #     print(response.json())
+    # # print("response.content : {}".format(response.content))
+    # return response.json()
+    #mass_dict = {}
+    total_fuel = 0
+    with open('fuel.txt',"r") as f:
+        for line in f:
+            total_fuel += fuel_calculation_for_modules_mass(int(line))
 
-        # Instead of requests.get(), you'll use session.get()
-        response = session.get('https://adventofcode.com/2019/day/1/input')
+    return total_fuel
 
-    # You can inspect the response just like you did before
-    print(response.headers)
-    print(response.json())
-    print("response.content : {}".format(response.content))
-
-    # mass_dict = {}
-    # with f = open('fuel.txt',"r"):
-    #     print("readlines: {}".format(f.readlines())
-    #     total_fuel_needed = [mass for mass in f.readlines()]
+if __name__ == '__main__':
+    mass_list = fuel_counter_upper()
+    print(mass_list)
