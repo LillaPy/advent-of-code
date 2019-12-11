@@ -12,3 +12,4 @@ def test_fuel_calculation_for_modules_mass(mass):
     assert fuel_calculation_for_modules_mass(14) == 2
     assert fuel_calculation_for_modules_mass(1969) == 654
     assert fuel_calculation_for_modules_mass(100756) == 33583
+ def test_fuel

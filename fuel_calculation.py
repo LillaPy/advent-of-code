@@ -9,7 +9,7 @@ def fuel_calculation_for_modules_mass(mass):
         module, take its mass, divide by three, round down, and subtract 2."""
 
     fuel_calc = mass // 3 - 2
-    print("fuel_calc : {}".format(fuel_calc))
+    # print("fuel_calc : {}".format(fuel_calc))
     return fuel_calc
 
 
@@ -36,12 +36,31 @@ def fuel_counter_upper():
     # return response.json()
     #mass_dict = {}
     total_fuel = 0
-    with open('fuel.txt',"r") as f:
+    with open('fuel.txt', "r") as f:
         for line in f:
             total_fuel += fuel_calculation_for_modules_mass(int(line))
 
     return total_fuel
 
+
+def day_one_part_2():
+    """Fuel itself requires fuel just like a module - take its mass, divide by three, round down, and subtract 2.
+     However, that fuel also requires fuel, and that fuel requires fuel, and so on. Any mass that would require
+      negative fuel should instead be treated as if it requires zero fuel"""
+
+    accumulated_fuel_mass = 0
+    with open('fuel.txt', "r") as f:
+        for line in f:
+            modules_fuel_mass = int(line)
+            while modules_fuel_mass >= 6:
+                modules_fuel_mass = fuel_calculation_for_modules_mass(modules_fuel_mass)
+                # print("modules_fuel_mass: {}".format(modules_fuel_mass))
+                accumulated_fuel_mass += modules_fuel_mass
+            tot_fuel = accumulated_fuel_mass
+    return tot_fuel
+
+
 if __name__ == '__main__':
     mass_list = fuel_counter_upper()
-    print(mass_list)
+    total_fuel = day_one_part_2()
+    print("Total fuel needed for module mass and fuel mass: {}".format(total_fuel))
